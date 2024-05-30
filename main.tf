@@ -1,3 +1,8 @@
+resource "google_storage_bucket_object" "source" {
+  name   = "index.zip"
+  bucket = var.bucket
+  source = var.path
+}
 
 resource "google_cloudfunctions_function" "function" {
   name        = var.name
@@ -6,7 +11,7 @@ resource "google_cloudfunctions_function" "function" {
 
   available_memory_mb   = 128
   source_archive_bucket = var.bucket
-  source_archive_object = var.path
+  source_archive_object = google_storage_bucket_object.source.name
   entry_point           = var.entrypoint
 
   dynamic "event_trigger" {
