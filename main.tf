@@ -1,5 +1,5 @@
 resource "google_storage_bucket_object" "source" {
-  name   = "index.zip"
+  name   = "${var.name}.zip"
   bucket = var.bucket
   source = var.path
 }
