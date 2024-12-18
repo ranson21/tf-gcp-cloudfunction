@@ -3,6 +3,22 @@ variable "name" {
   description = "Name of the function"
 }
 
+# variable "network_name" {
+#   description = "The name of the VPC network"
+#   type        = string
+# }
+
+variable "region" {
+  description = "The region to deploy the Cloud Function"
+  type        = string
+}
+
+variable "connector_ip_cidr_range" {
+  description = "The IP CIDR range for the VPC connector"
+  type        = string
+  default     = "10.8.0.0/28"
+}
+
 variable "description" {
   type        = string
   description = "Description of the function"
